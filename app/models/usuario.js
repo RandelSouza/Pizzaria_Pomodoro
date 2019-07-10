@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports = function() {
     var schema = mongoose.Schema({
-        usuario: {
+        login: {
             type: String,
             required: true
         },
