@@ -4,7 +4,7 @@ module.exports = function (app) {
         var controller = {};
 
         controller.login = function (req, res) {
-            //var usuario = new Usuario({login: 'admin', senha : 123});
+            //var usuario = new Usuario({login: 'admin', senha : hash(123)});
             //usuario.save();
             res.render('login');
         };
@@ -17,6 +17,7 @@ module.exports = function (app) {
         controller.validacao = function (req, res) {
             console.log(req.body.login, hash(req.body.senha));
             Usuario.findOne({login : req.body.login, senha : hash(req.body.senha)}, function (err, login) {
+                console.log(login);
                 if (err){
                      return handleError(err);
                 }

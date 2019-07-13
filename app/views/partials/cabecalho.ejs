@@ -11,8 +11,9 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-<body>
-	<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+<body >
+	<div class="container">
+	<nav class="navbar navbar-expand-md navbar-dark mb-4" style="background-color: #563d7b">
        <a class="navbar-brand" href="home.jsp">
            <img src="img/logo_pizza-300x300.jpg" width="30" height="30" alt="logo pizzaria">
        </a>
@@ -23,76 +24,74 @@
        <ul class="navbar-nav mr-auto">
 
          <li class="nav-item active">
-           <a class="nav-link" href="home.jsp">Home</a>
+           <a class="nav-link" href="/">Home</a>
          </li>
 
-         <li class="nav-item active dropdown">
+         <!--li class="nav-item active dropdown">
            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" arial-labelledby="navbarDropdown">Listar</a>
            <div class="dropdown-menu" arial-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="PecaServlet?id=listar">Peças</a>
+               <a class="dropdown-item" href="#">Peças</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="FuncionarioServlet?id=listar">Funcionários</a>
+               <a class="dropdown-item" href="#">Funcionários</a>
            </div>
-         </li>
+	   </li-->
 
-        <li class="nav-item active dropdown">
+        <!--li class="nav-item active dropdown">
            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" arial-labelledby="navbarDropdown">Cadastrar</a>
            <div class="dropdown-menu" arial-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="cadastroPeca.jsp">Peça</a>
+               <a class="dropdown-item" href="#">Peça</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="cadastroFuncionario.jsp">Funcionário</a>
+               <a class="dropdown-item" href="#">Funcionário</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="cadastroUsuario.jsp">Usuário</a>
+               <a class="dropdown-item" href="#">Usuário</a>
            </div>
-          </li>
+	   </li-->
 
-           <li class="nav-item active dropdown">
+           <!--li class="nav-item active dropdown">
            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" arial-labelledby="navbarDropdown">Auditoria</a>
            <div class="dropdown-menu" arial-labelledby="navbarDropdown">
-               <a class="dropdown-item" href="auditoria.jsp">Ações realizadas em Peças</a>
+               <a class="dropdown-item" href="#">Ações realizadas em Peças</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="auditoriaEntrada.jsp">Entrada de Peça</a>
+               <a class="dropdown-item" href="#">Entrada de Peça</a>
                 <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="auditoriaSaida.jsp">Saída de Peça</a>
+               <a class="dropdown-item" href="#">Saída de Peça</a>
                <div class="dropdown-divider"></div>
-               <a class="dropdown-item" href="auditoriaEntradaSaida.jsp">Entrada e Saída de Peça</a>
+               <a class="dropdown-item" href="#">Entrada e Saída de Peça</a>
            </div>
-          </li>
+	   	</li-->
 
-             <li class="nav-item">
-               <a class="nav-link disabled" href="Entrada.jsp">Entrada</a>
-             </li>
+             <!--li class="nav-item">
+               <a class="nav-link disabled" href="#">Entrada</a>
+		   </li-->
 
-             <li class="nav-item active">
-               <a class="nav-link" href="Saida.jsp">Saída</a>
-             </li>
-          <li>
-              <div class="container">
-                   <button type="submit" class="btn btn-link navbar-btn navbar-danger" data-toggle="modal" data-target="#myModal">Logout</button>
-                   <div class="modal fade" id="myModal" role="dialog">
-                       <div class="modal-dialog modal-sm">
-                         <div class="modal-content">
-                           <div class="modal-header">
-                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                             <!--h4>Logout</h4-->
-                           </div>
-                           <div class="modal-body">
-                             <p align="center">Deseja realmente deslogar?</p>
-                           </div>
-                           <div class="modal-footer" align="center">
-                               <form action="LogoutServlet" method="post">
-                                   <button type="submit" class="btn btn-success" data-dismiss="">Sim</button>
-                              </form>
-                               <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
-                           </div>
-                         </div>
-                       </div>
-                   </div>
-               </div>
+             <!--li class="nav-item active">
+               <a class="nav-link" href="#">Saída</a>
+		   </li-->
+          <li class="nav-item">
+	           <button type="submit" class="btn btn-link nav-link" data-toggle="modal" data-target="#myModal">Logout</button>
+	           <div class="modal fade" id="myModal" role="dialog">
+	               <div class="modal-dialog modal-sm">
+	                 <div class="modal-content">
+	                   <div class="modal-header">
+						 <p>Logout</p>
+	                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+					 </div>
+	                   <div class="modal-body">
+	                     <p align="center">Deseja realmente fazer Logout?</p>
+	                   </div>
+	                   <div class="modal-footer">
+	                       <form action="logout" method="get">
+	                    		<button type="submit" class="btn btn-xs btn-success" data-dismiss="">Sim</button>
+								<button type="button" class="btn btn-xs btn-danger" data-dismiss="modal">Não</button>
+	                      </form>
+	                   </div>
+	                 </div>
+	               </div>
+	           </div>
            </li>
 
-           <li>
-               <a class="nav-link disabled" href="#">Usuário: admin </a>
+           <li class="nav-item active">
+               <a class="nav-link disabled" href="#">Usuário: </a>
            </li>
        </ul>
 

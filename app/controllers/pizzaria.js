@@ -4,7 +4,10 @@ module.exports = function (app) {
         var controller = {};
 
         controller.home = function (req, res) {
-            res.render('home');
+            app.controllers.login.autoriza(req, res, function(){
+                res.render('home');
+            });
+
         };
 
         return controller;

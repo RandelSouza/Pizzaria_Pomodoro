@@ -1,3 +1,15 @@
 <% include partials/cabecalho %>
-<h1>Home Pizzaria</h1>
+<div id="pizzaria">
+	<h1>{{ titulo }}</h1>
+</div>
+
+<script>
+	var app = new Vue({
+	  el: '#pizzaria',
+	  data: {
+		  titulo: 'Pizzaria Pomodoro'
+	  }
+  })
+ </script>
+
 <% include partials/rodape %>
