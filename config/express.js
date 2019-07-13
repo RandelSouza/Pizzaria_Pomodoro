@@ -15,7 +15,7 @@ module.exports = function(){
     // Middleware
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({extended: true}));
-    app.use(express.static('./public'));
+    app.use(express.static('./app/views/public'));
     app.use(cookieParser());
 
     app.use(session({
