@@ -4,6 +4,8 @@ module.exports = function (app) {
         var controller = {};
 
         controller.login = function (req, res) {
+            //var usuario = new Usuario({login: 'admin', senha : 123});
+            //usuario.save();
             res.render('login');
         };
 
@@ -17,17 +19,27 @@ module.exports = function (app) {
             Usuario.findOne({login : req.body.login, senha : hash(req.body.senha)}, function (err, login) {
                 if (err){
                      return handleError(err);
-                };
+                }
 
                 if (login){
                     req.session.user = login._id;
                     res.redirect('/')
-                };
-
+                }
                 else {
                     res.redirect('login');
-                };
+                }
 
             });
         };
+
+        controller.autoriza = function(req, res, callback_function){
+            if(req.session.user == undefined){
+                req.session.destroy();
+                res.redirect('login');
+            }else {
+                callback_function();
+            }
+        };
+
+        return controller;
 };

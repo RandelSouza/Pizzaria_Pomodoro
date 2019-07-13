@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports = function(uri){
 
-    mongoose.connect(uri, {useMongoClient: true});
+    mongoose.connect(uri, { useNewUrlParser: true });
 
     mongoose.connection.on('connected', function(){
         console.log('Mongoose Conection Sucess! URI: ' + uri);
