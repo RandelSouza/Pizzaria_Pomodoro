@@ -23,7 +23,8 @@ module.exports = function (app) {
                 }
 
                 if (login){
-                    req.session.user = login._id;
+                    req.session.user_name = login.login;
+                    req.session.user_id = login._id;
                     res.redirect('/')
                 }
                 else {
@@ -34,7 +35,7 @@ module.exports = function (app) {
         };
 
         controller.autoriza = function(req, res, callback_function){
-            if(req.session.user == undefined){
+            if(req.session.user_id == undefined){
                 req.session.destroy();
                 res.redirect('login');
             }else {
@@ -42,5 +43,10 @@ module.exports = function (app) {
             }
         };
 
+        controller.usuario =  function(req, res){
+            app.controllers.login.autoriza(req, res, function() {
+                res.json(req.session.user_name);
+            });
+        };
         return controller;
 };
