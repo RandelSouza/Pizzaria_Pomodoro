@@ -1,6 +1,4 @@
-module.exports = function(app) {
+module.exports = (app) => {
     var controller = app.controllers.pizzaria;
-    app.get('/', controller.home);
-    //app.post('/login', controller.validacao);
-    //app.get('/logout', controller.logout);sl
+    app.get('/', controller.home);    
 }

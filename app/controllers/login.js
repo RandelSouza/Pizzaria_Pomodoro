@@ -1,22 +1,18 @@
-module.exports = function (app) {
+module.exports = (app) => {
         var hash = require('object-hash');
         var Usuario = app.models.usuario;
         var controller = {};
 
-        controller.login = function (req, res) {
-            //var usuario = new Usuario({login: 'admin', senha : hash(123)});
-            //usuario.save();
-            res.render('login');
-        };
+        controller.login = (req, res) => res.render('login');
 
-        controller.logout = function (req, res){
+        controller.logout = (req, res) => {
                 req.session.destroy();
                 res.redirect('login');
         };
 
-        controller.validacao = function (req, res) {
+        controller.validacao = (req, res) => {
             console.log(req.body.login, hash(req.body.senha));
-            Usuario.findOne({login : req.body.login, senha : hash(req.body.senha)}, function (err, login) {
+            Usuario.findOne({login : req.body.login, senha : hash(req.body.senha)}, (err, login) => {
                 console.log(login);
                 if (err){
                      return handleError(err);
@@ -34,7 +30,7 @@ module.exports = function (app) {
             });
         };
 
-        controller.autoriza = function(req, res, callback_function){
+        controller.autoriza = (req, res, callback_function) => {
             if(req.session.user_id == undefined){
                 req.session.destroy();
                 res.redirect('login');
@@ -43,10 +39,7 @@ module.exports = function (app) {
             }
         };
 
-        controller.usuario =  function(req, res){
-            app.controllers.login.autoriza(req, res, function() {
-                res.json(req.session.user_name);
-            });
-        };
+        controller.usuario = (req, res) => app.controllers.login.autoriza(req, res, () => res.json(req.session.user_name));
+
         return controller;
 };

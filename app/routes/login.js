@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = (app) => {
     var controller = app.controllers.login;
 
     app.get('/login', controller.login);

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = function() {
+module.exports = () => {
     var schema = mongoose.Schema({
         login: {
             type: String,
@@ -11,5 +11,5 @@ module.exports = function() {
             required: true
         }
     });
-    return mongoose.model('Usuario', schema)
+    return mongoose.model('Usuario', schema);   
 };
