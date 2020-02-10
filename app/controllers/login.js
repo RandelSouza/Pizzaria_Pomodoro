@@ -10,7 +10,7 @@ module.exports = (app) => {
             res.redirect('login');
     };
 
-        controller.validacao = (req, res) => {
+        controller.validation = (req, res) => {
             console.log(req.body.login, hash(req.body.senha));
             Usuario.findOne({login : req.body.login, senha : hash(req.body.senha)}, (err, login) => {
                 console.log(login);
