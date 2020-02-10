@@ -6,9 +6,9 @@ module.exports = (app) => {
         controller.login = (req, res) => res.render('login');
 
         controller.logout = (req, res) => {
-                req.session.destroy();
-                res.redirect('login');
-        };
+            req.session.destroy();
+            res.redirect('login');
+    };
 
         controller.validacao = (req, res) => {
             console.log(req.body.login, hash(req.body.senha));
@@ -26,7 +26,6 @@ module.exports = (app) => {
                 else {
                     res.redirect('login');
                 }
-
             });
         };
 
