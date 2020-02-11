@@ -1,4 +1,4 @@
-FROM gitpod/workspace-mongodb
+FROM gitpod/workspace-full
                     
 USER gitpod
 
@@ -18,4 +18,3 @@ RUN sudo apt-get update \
 RUN sudo mkdir -p /data/db \
  && sudo chown gitpod:gitpod -R /data/db
 
- RUN mkdir -p /workspace/data && mongod --dbpath /workspace/data
