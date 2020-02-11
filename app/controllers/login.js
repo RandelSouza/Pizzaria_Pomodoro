@@ -17,7 +17,7 @@ module.exports = (app) => {
             //    login: 'admin',
             //    senha: hash('123')
             //});
-
+            // codigo exemple de inserção de um novo usuário
             //user.save(function (err, results) {
             //    console.log(results._id);
             //});
