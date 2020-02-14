@@ -2,5 +2,6 @@ tasks:
   - init: npm install
     command: mkdir -p /workspace/data && mongod --dbpath /workspace/data  &
   - command: npm install -g nodemon
+  - command: nodemon index.js
 image:
   file: .gitpod.Dockerfile
