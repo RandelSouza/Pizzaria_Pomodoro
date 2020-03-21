@@ -1,5 +1,5 @@
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RandelSouza/Pizzaria_Pomodoro/tree/RandelSouza/gitpod-setup)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/RandelSouza/Pizzaria_Pomodoro)
 
 
 # Pizzaria_Pomodoro
