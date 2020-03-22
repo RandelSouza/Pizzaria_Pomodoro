@@ -48,7 +48,7 @@ module.exports = (app) => {
             }
         };
 
-        controller.usuario = (req, res) => app.controllers.login.autoriza(req, res, () => res.json(req.session.user_name));
-
+        controller.usuario = (req, res) => app.controllers.login.autoriza(req, res, () => res.json(req.session.user_name));       
+        
         return controller;
 };

@@ -97,6 +97,16 @@
            <li class="nav-item active">
                <a class="nav-link disabled" href="#">Usuário: {{ usuario }}</a>
            </li>
+
+        <li class="nav-item active dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown" arial-labelledby="navbarDropdown">Cardápio</a>
+            <div class="dropdown-menu" arial-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/pizzas">Pizzas</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/bebidas">Bebidas</a>
+                <div class="dropdown-divider"></div>                
+            </div>
+        </li>
            
             <li class="nav-item active">
                <a class="nav-link disabled" href="#">Número aleatório: {{ random }}</a>
