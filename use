@@ -1,0 +1,32 @@
+MongoDB shell version v4.0.16
+connecting to: mongodb://127.0.0.1:27017/dbs?gssapiServiceName=mongodb
+Implicit session: session { "id" : UUID("08fc42e0-0a18-4baf-8129-2d74cc88a97f") }
+MongoDB server version: 4.0.16
+Server has startup warnings: 
+2020-03-23T14:58:11.079+0000 I STORAGE  [initandlisten] 
+2020-03-23T14:58:11.088+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2020-03-23T14:58:11.088+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] 
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] 
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] ** WARNING: This server is bound to localhost.
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] **          Remote systems will be unable to connect to this server. 
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] **          Start the server with --bind_ip <address> to specify which IP 
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] **          addresses it should serve responses from, or with --bind_ip_all to
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] **          bind to all interfaces. If this behavior is desired, start the
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] **          server with --bind_ip 127.0.0.1 to disable this warning.
+2020-03-23T14:58:13.617+0000 I CONTROL  [initandlisten] 
+---
+Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+and anyone you share the URL with. MongoDB may use this information to make product
+improvements and to suggest MongoDB products and deployment options to you.
+
+To enable free monitoring, run the following command: db.enableFreeMonitoring()
+To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+---
+
+> 
