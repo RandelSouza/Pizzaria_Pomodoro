@@ -1,11 +1,12 @@
 tasks:
   - init: npm install
     command: mkdir -p /workspace/data && mongod --dbpath /workspace/data  &
-  - command: npm install -g nodemon
-  - command: mongo <<EOF         
-             use pizzaria
-             db.usuarios.insert({login: "admin", senha : "2fb54875d166ab45a6a8b21f1631dec573a8cf07"})
-             db.usuarios.insert({login: "randel", senha : "2fb54875d166ab45a6a8b21f1631dec573a8cf07"})
-             EOF    
+  - command: npm install -g nodemon 
+  - command: echo "mongo <<EOF" >> inser_users.sh && \
+             echo "use pizzaria" >> inser_users.sh && \
+             echo "db.usuarios.insert( { login : "admin", senha : "2fb54875d166ab45a6a8b21f1631dec573a8cf07" })" >> inser_users.sh && \
+             echo "db.usuarios.insert( { login: "randel", senha : "2fb54875d166ab45a6a8b21f1631dec573a8cf07"})" >> inser_users.sh && \
+             echo "EOF" >> inser_users.sh    
+
 image:
   file: .gitpod.Dockerfile
