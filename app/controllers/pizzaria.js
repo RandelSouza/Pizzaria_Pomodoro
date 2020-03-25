@@ -8,7 +8,7 @@ module.exports = (app) => {
         
         controller.about_us = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('sobre_nos')); 
         
-        controller.cardapio_pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
+        controller.adicionar_pizza_page = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
         
         controller.adicionar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {                        
             var pizza = new Pizza({
@@ -21,9 +21,12 @@ module.exports = (app) => {
                 console.log(results._id);
             });
 
-            res.redirect('/pizzas');
+            res.redirect('/adicionar_pizza');
         });
-                                                
+                             
+        
+        controller.listar_pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('listar_pizzas'));
+
         controller.cardapio_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_bebidas'));
         
         return controller;

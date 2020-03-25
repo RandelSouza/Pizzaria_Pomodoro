@@ -1,0 +1,26 @@
+<% include partials/cabecalho %>
+<h1 align="center">{{ titulo }}</h1>
+<div class="container">
+    <div align="justify" style="margin-top: 50px; margin-bottom: 50px;">        
+    </div>
+</div>
+
+<script>
+	var app = new Vue({
+	  el: '#pizzaria',
+	  data: {
+		  titulo: 'Cardápio de Pizzas',
+          usuario: '',
+          random: Math.floor(Math.random() * 10)
+	  },
+	  methods:{
+	  },
+	  mounted:() => {
+	  	axios.get('/usuario')
+		.then((response) => app.usuario = response.data)
+		.catch((error) => console.log(error));
+	 }
+  })
+ </script>
+
+<% include partials/rodape %>
