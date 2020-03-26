@@ -1,7 +1,7 @@
 <% include partials/cabecalho %>
 <h1 align="center">{{ titulo }}</h1>
 <div class="container table-responsive-md">
-    <table border="1" class="table text-center table-borderless table-dark table-striped table-bordered table-hover">
+    <table border="1" class="table text-center  table-dark table-striped table-bordered table-hover">
     <thead class="thead-dark">
         <tr>
             <th scope="col">Nome</th>
@@ -12,11 +12,11 @@
     </thead>
     <tbody>
         <tr v-for="pizza in pizzas">
-            <td>{{ pizza.nome }}</td>
-            <td>{{ pizza.descricao }}</td>
-            <td>R$ {{ pizza.preco.$numberDecimal }}</td> 
+            <td width="20%">{{ pizza.nome }}</td>
+            <td text-align="justify" width="40%">{{ pizza.descricao }}</td>
+            <td width="20%">R$ {{ pizza.preco.$numberDecimal }}</td> 
                                
-            <td v-if="usuario == 'admin'">
+            <td width="20%" v-if="usuario == 'admin'">
                 <div class="row" ALIGN="center"> 
                     <div class="col">
                         <a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualiza</a>                                       
