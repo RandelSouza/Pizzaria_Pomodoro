@@ -13,16 +13,16 @@
     <tbody>
         <tr v-for="pizza in pizzas">
             <td width="20%">{{ pizza.nome }}</td>
-            <td text-align="justify" width="40%">{{ pizza.descricao }}</td>
+            <td width="40%">{{ pizza.descricao }}</td>
             <td width="20%">R$ {{ pizza.preco.$numberDecimal }}</td> 
                                
             <td width="20%" v-if="usuario == 'admin'">
                 <div class="row" ALIGN="center"> 
                     <div class="col">
-                        <a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualiza</a>                                       
+                        <a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a>                                       
                     </div>           
                     <div class="col" style="float: left;">             
-                        <a style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/" v-on:click="deleta(contato._id)">Deleta</a>
+                        <a style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/" v-on:click="deleta(contato._id)">Deletar</a>
                     </div>
                 </div>
             </td>            
