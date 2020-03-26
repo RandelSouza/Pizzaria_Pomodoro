@@ -7,13 +7,30 @@
             <th>Nome</th>
             <th>Descrição</th>
             <th>Preço</th>
+            <th v-if="usuario == 'admin'">Ações</th>           
         </tr>
     </thead>
     <tbody>
+    
+<style>
+.mesmo-tamanho{
+    width: 100%;                           
+}                                                           
+</style>
         <tr v-for="pizza in pizzas">
             <td>{{ pizza.nome }}</td>
             <td>{{ pizza.descricao }}</td>
-            <td>R$ {{ pizza.preco.$numberDecimal }}</td>            
+            <td>R$ {{ pizza.preco.$numberDecimal }}</td> 
+            <div class="row">            
+                <td v-if="usuario == 'admin'">
+                    <div class="rol">                
+                        <button class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualiza</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>                        
+                    <div class="rol">             
+                        <button class="btn btn-xs btn-danger mesmo-tamanho" href="#/" v-on:click="deleta(contato._id)">Deleta</button>
+                    </div>                        
+                </td>
+            <div>
         </tr>
     </tbody>
 </table>
