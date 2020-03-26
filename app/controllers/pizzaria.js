@@ -4,7 +4,14 @@ module.exports = (app) => {
 
         var controller = {};
 
-        controller.home = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('home'));
+        controller.home = (req, res) => app.controllers.login.autoriza(req, res, () => {
+            
+            Pizza.find((err, pizzas) => {
+				console.log(pizzas);
+				if (err) return console.error(err);
+				res.render('home', {pizzas: pizzas});
+            });                        
+        });
         
         controller.about_us = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('sobre_nos')); 
         
