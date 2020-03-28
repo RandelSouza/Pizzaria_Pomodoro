@@ -19,13 +19,45 @@
             <td width="20%" v-if="usuario == 'admin'">
                 <div class="row" ALIGN="center"> 
                     <div class="col">
-                        <a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a>                                       
+                        <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->                                       
+                            <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary mesmo-tamanh" data-toggle="modal" v-bind:data-target="`#exampleModal` + pizza._id">
+                        Atualizar
+                        </button>
                     </div>           
                     <div class="col" style="float: left;">             
                         <a style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/" v-on:click="deleta(contato._id)">Deletar</a>
                     </div>
                 </div>
-            </td>            
+
+
+<!-- Modal -->
+<div style="color: black;" class="modal fade" v-bind:id="`exampleModal` + pizza._id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="color: black;" class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div style="color: black;" class="modal-body">
+        Deseja realmente atualizar esta pizza?</br>
+        {{ pizza.nome }}</br>
+        {{ pizza.descricao }}</br>
+        {{ pizza.preco.$numberDecimal }}</br>
+        {{ pizza._id }}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+            </td>                        
         </tr>
     </tbody>
 </table>
