@@ -3,64 +3,110 @@
 <h1 align="center">{{ titulo }}</h1>
 <div class="container table-responsive-md ">
     <table border="1" class=" table-fixed table text-center  table-dark table-striped table-bordered table-hover">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Descrição</th>
-            <th scope="col">Preço</th>
-            <th scope="col" v-if="usuario == 'admin'">Ações</th>           
-        </tr>
-    </thead>
-    <tbody >
-        <tr v-for="pizza in pizzas">
-            <td width="20%">{{ pizza.nome }}</td>
-            <td width="40%">{{ pizza.descricao }}</td>
-            <td width="20%">R$ {{ pizza.preco.$numberDecimal }}</td> 
-                               
-            <td width="20%" v-if="usuario == 'admin'">
-                <div class="row" ALIGN="center"> 
-                    <div class="col">
-                        <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->                                       
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Preço</th>
+                <th scope="col" v-if="usuario == 'admin'">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="pizza in pizzas">
+                <td width="20%">{{ pizza.nome }}</td>
+                <td width="40%">{{ pizza.descricao }}</td>
+                <td width="20%">R$ {{ pizza.preco.$numberDecimal }}</td>
+
+                <td width="20%" v-if="usuario == 'admin'">
+                    <div class="row" ALIGN="center">
+                        <div class="col">
+                            <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->
                             <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary mesmo-tamanh" data-toggle="modal" v-bind:data-target="`#exampleModal` + pizza._id">
-                        Atualizar
-                        </button>
-                    </div>           
-                    <div class="col" style="float: left;">             
-                        <a style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/" v-on:click="deleta(contato._id)">Deletar</a>
-                    </div>                    
-                </div>
-                
-                <% include partials/modal_atualizar %>
-            </td>                        
-        </tr>
-    </tbody>
-</table>
+                            <button type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal"
+                                data-target="#exampleModal" v-bind:data-identificador="pizza._id"
+                                v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal"
+                                v-bind:data-descricao="pizza.descricao">
+                                Atualizar
+                            </button>
+                        </div>
+                        <div class="col" style="float: left;">
+                            <a style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/"
+                                v-on:click="deleta(contato._id)">Deletar</a>
+                        </div>
+                    </div>
+
+                    <!--% include partials/modal_atualizar %-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
+
+<% include partials/modal_atualizar_copy %>
 
 <script>
     // Criar metodo para atualizar os dados modificados
-	var app = new Vue({
-	  el: '#pizzaria',
-	  data: {
-          pizzas: [],
-		  titulo: 'Cardápio de Pizzas',
-          usuario: '',
-          random: Math.floor(Math.random() * 10)
-	  },
-	  methods:{
-	  },
-	  mounted:() => {
-	  	axios.get('/usuario')
-	    .then((response) => app.usuario = response.data)
-        .catch((error) => console.log(error));
+    var app = new Vue({
+        el: '#pizzaria',
+        data: {
+            pizzas: [],
+            titulo: 'Cardápio de Pizzas',
+            usuario: '',
+            random: Math.floor(Math.random() * 10)
+        },
+        methods: {
+            atualizar_pizza: () => {
+                var identificador = $('#exampleModal').find("input[name=identificador]").val();
+                var nome = $('#exampleModal').find("input[name=nome]").val();
+                var preco = $('#exampleModal').find("input[name=preco]").val();
+                var descricao = $('#exampleModal').find("input[name=descricao]").val();
 
-        axios.get('/pizzas')       
-		.then((response) => app.pizzas = response.data)
-		.catch((error) => console.log(error));
-	 }
-  })
+                axios.post('/pizza/atualizar', {
+                    id: identificador,
+                    nome: nome,
+                    preco: preco,
+                    descricao: descricao
+                })
+                    .then((response) => {
+                        app.pizzas = response.data;
+                        $('#exampleModal').modal('toggle');                                                
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                console.log('Finalizou....');
+            }
+        },
+        mounted: () => {
+            axios.get('/usuario')
+                .then((response) => app.usuario = response.data)
+                .catch((error) => console.log(error));
 
- </script>
+            axios.get('/pizzas')
+                .then((response) => app.pizzas = response.data)
+                .catch((error) => console.log(error));
+        }
+    })
+
+</script>
+
+<script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var identificador = button.data('identificador') // Extract info from data-* attributes
+        var nome = button.data('nome')
+        var preco = button.data('preco')
+        var descricao = button.data('descricao')
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+
+        //modal.find('.modal-title').text('ID ' + recipient)
+        modal.find('#identificador').val(identificador)
+        modal.find('#nome').val(nome)
+        modal.find('#preco').val(preco)
+        modal.find('#descricao').val(descricao)
+    })
+</script>
 
 <% include partials/rodape %>

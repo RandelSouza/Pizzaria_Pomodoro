@@ -12,7 +12,7 @@ module.exports = (app) => {
         
         controller.pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => {
              Pizza.find((err, pizzas) => {
-				console.log(pizzas);
+				// console.log(pizzas);
 				if (err) return console.error(err);
 				res.json(pizzas);
             });
@@ -34,7 +34,21 @@ module.exports = (app) => {
                              
         
         controller.listar_pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('listar_pizzas'));
+        
+        controller.atualizar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {
+            var id = req.body.id;
+			var nome = req.body.nome;
+            var preco = req.body.preco;
+            var descricao = req.body.descricao;
+            
+            console.log("identificador: " + id);
 
+			Pizza.findByIdAndUpdate(id, {$set: { nome: nome, descricao: descricao, preco: preco} }, (err) => {
+				if (err) return console.error(err);
+				controller.pizzas(req, res);
+			});
+        });
+        
         controller.cardapio_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_bebidas'));
         
         return controller;

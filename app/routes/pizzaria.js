@@ -7,7 +7,8 @@ module.exports = (app) => {
     app.post('/adicionar_pizza', controller.adicionar_pizza);
    
     app.get('/listar_pizzas', controller.listar_pizzas);
-    app.get('/pizzas', controller.pizzas)   
+    app.get('/pizzas', controller.pizzas);   
+    app.post('/pizza/atualizar', controller.atualizar_pizza);
     
     app.get('/bebidas', controller.cardapio_bebidas);    
 
