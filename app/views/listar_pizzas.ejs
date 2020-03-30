@@ -37,9 +37,10 @@
             </tr>
         </tbody>
     </table>
+    <% include partials/modal_atualizar_copy %>
+
 </div>
 
-<% include partials/modal_atualizar_copy %>
 
 <script>
     // Criar metodo para atualizar os dados modificados
@@ -83,11 +84,8 @@
                 .then((response) => app.pizzas = response.data)
                 .catch((error) => console.log(error));
         }
-    })
+    });
 
-</script>
-
-<script>
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var identificador = button.data('identificador'); // Extract info from data-* attributes
@@ -103,7 +101,9 @@
         modal.find('#nome').val(nome);
         modal.find('#preco').val(preco);
         modal.find('#descricao').val(descricao);
-    });
+        console.log('Chegou ao fim da função modal');
+    }); 
 </script>
+
 
 <% include partials/rodape %>
