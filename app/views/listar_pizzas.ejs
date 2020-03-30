@@ -22,10 +22,7 @@
                         <div class="col">
                             <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal"
-                                data-target="#exampleModal" v-bind:data-identificador="pizza._id"
-                                v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal"
-                                v-bind:data-descricao="pizza.descricao">
+                            <button type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal" data-target="#exampleModal" v-bind:data-identificador="pizza._id" v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal" v-bind:data-descricao="pizza.descricao">
                                 Atualizar
                             </button>
                         </div>
@@ -92,21 +89,21 @@
 
 <script>
     $('#exampleModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var identificador = button.data('identificador') // Extract info from data-* attributes
-        var nome = button.data('nome')
-        var preco = button.data('preco')
-        var descricao = button.data('descricao')
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var identificador = button.data('identificador'); // Extract info from data-* attributes
+        var nome = button.data('nome');
+        var preco = button.data('preco');
+        var descricao = button.data('descricao');
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
+        var modal = $(this);
 
         //modal.find('.modal-title').text('ID ' + recipient)
-        modal.find('#identificador').val(identificador)
-        modal.find('#nome').val(nome)
-        modal.find('#preco').val(preco)
-        modal.find('#descricao').val(descricao)
-    })
+        modal.find('#identificador').val(identificador);
+        modal.find('#nome').val(nome);
+        modal.find('#preco').val(preco);
+        modal.find('#descricao').val(descricao);
+    });
 </script>
 
 <% include partials/rodape %>
