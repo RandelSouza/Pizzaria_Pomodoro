@@ -22,7 +22,7 @@
                         <div class="col">
                             <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal" data-target="#exampleModal" v-bind:data-identificador="pizza._id" v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal" v-bind:data-descricao="pizza.descricao">
+                            <button v-bind:id="`atualizar` + pizza._id" type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal" data-target="#exampleModal" v-bind:data-identificador="pizza._id" v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal" v-bind:data-descricao="pizza.descricao">
                                 Atualizar
                             </button>
                         </div>
@@ -67,12 +67,13 @@
                 })
                     .then((response) => {
                         app.pizzas = response.data;
-                        $('#exampleModal').modal('toggle');                                                
+                        $('#exampleModal').modal('show');                        
+
                     })
                     .catch((error) => {
                         console.log(error);
-                    });
-                console.log('Finalizou....');
+                    });                               
+                 console.log('Finalizou....');
             }
         },
         mounted: () => {
@@ -104,6 +105,5 @@
         console.log('Chegou ao fim da função modal');
     }); 
 </script>
-
 
 <% include partials/rodape %>
