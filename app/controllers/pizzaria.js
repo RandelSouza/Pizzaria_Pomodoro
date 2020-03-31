@@ -25,7 +25,7 @@ module.exports = (app) => {
                 preco: req.body.preco
             });
 
-            pizza.save(function (err, results) {
+            pizza.save((err, results) => {
                 console.log(results._id);
             });
 
