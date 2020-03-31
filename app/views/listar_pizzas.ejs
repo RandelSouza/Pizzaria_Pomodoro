@@ -98,10 +98,17 @@
         var modal = $(this);
 
         //modal.find('.modal-title').text('ID ' + recipient)
-        modal.find('#identificador').val(identificador);
+        modal.find('#identificador').val(identificador);        
+        
         modal.find('#nome').val(nome);
+        $('#nome').attr('placeholder', nome);
+
         modal.find('#preco').val(preco);
+        $('#preco').attr('placeholder', preco);
+
         modal.find('#descricao').val(descricao);
+        $('#descricao').attr('placeholder', descricao);
+
         console.log('Chegou ao fim da função modal');
     }); 
 </script>
