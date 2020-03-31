@@ -27,8 +27,8 @@
                             </button>
                         </div>
                         <div class="col" style="float: left;">
-                            <a style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/"
-                                v-on:click="deleta(contato._id)">Deletar</a>
+                            <button style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/"
+                                v-on:click="deletar_pizza(pizza._id)">Deletar</button>
                         </div>
                     </div>
 
@@ -74,6 +74,14 @@
                         console.log(error);
                     });                               
                  console.log('Finalizou....');
+            },
+
+            deletar_pizza: (id) => {
+                console.log(id);
+
+                axios.delete('/pizza/'+ id)
+                    .then((response) => app.pizzas = response.data)
+                    .catch((error) => console.log(error));
             }
         },
         mounted: () => {

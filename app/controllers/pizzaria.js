@@ -49,6 +49,15 @@ module.exports = (app) => {
 			});
         });
         
+
+        controller.deletar_pizza =  (req, res) => app.controllers.login.autoriza(req, res, () => {
+            var id = req.params.id;
+            Pizza.remove({_id: id}, (err) => {
+                if (err) return console.error(err);
+				controller.pizzas(req, res);
+            });
+        });
+
         controller.cardapio_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_bebidas'));
         
         return controller;
