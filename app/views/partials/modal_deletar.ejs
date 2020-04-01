@@ -1,10 +1,10 @@
 <!--MODAL TEMPLATE-->
-<div style="color: black;" class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel">
+<div style="color: black;" class="modal fade" id="exampleModalDelete" role="dialog" aria-labelledby="exampleModalDeleteLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 text-color="black" class="modal-title" id="exampleModalLabel">Atualizar Pizza</h4>
+                <h4 text-color="black" class="modal-title" id="exampleModalDeleteLabel">Deseja realmente Deletar esta Pizza?</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -20,24 +20,21 @@
 
                     <div class="form-group">
                         <label for="nome" class="control-label">Nome:</label>
-                        <input name="nome" type="text" class="form-control" id="nome">
+                        <input readonly name="nome" type="text" class="form-control" id="nome">
                     </div>
 
                     <div class="form-group">
                         <label for="preco" class="control-label">Preço:</label>
-                        <input type="number" min=".00" step=".01" name="preco" class="form-control" id="preco">
+                        <input readonly type="number" min=".00" step=".01" name="preco" class="form-control" id="preco">
                     </div>
 
                     <div class="form-group">
                         <label for="descricao" class="control-label">Descrição:</label>
-                        <input name="descricao" class="form-control" id="descricao">
+                        <input readonly name="descricao" class="form-control" id="descricao">
                     </div>
-
-                    <!--input name="id" type="hidden" class="form-control" id="idnf" value="editar"-->
-                    <!--input name="id-peca" type="hidden" class="form-control" id="id-peca" value=""-->
-
-                    <button href="#" v-on:click="atualizar_pizza()" class="btn btn-success">Atualizar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  
+                    <button href="#" v-on:click="deletar_pizza()" class="btn btn-danger">Deletar</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
                 </form>
             </div>
         </div>

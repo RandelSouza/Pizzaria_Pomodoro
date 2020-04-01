@@ -1,45 +1,44 @@
-<!-- Modal Atualizar Pizza-->
-<div style="color: black;" class="modal fade" v-bind:id="`exampleModal` + pizza._id" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<!--MODAL TEMPLATE-->
+<div style="color: black;" class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
+
             <div class="modal-header">
-                <h5 style="color: black;" class="modal-title" id="exampleModalLabel">Deseja realmente atualizar esta
-                    pizza?
-                </h5>
+                <h4 text-color="black" class="modal-title" id="exampleModalLabel">Atualizar Pizza</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div style="color: black;" class="modal-body">
-                <form class="">
+
+            <div class="modal-body">
+                <form method="get" action="">
+
                     <div class="form-group">
-                        <label for="nome" class="control-label">Nome:</label>
-                        <input name="nome" type="text" class="form-control" id="nome" v-bind:placeholder="pizza.nome"  v-bind:value="pizza.nome">
+                        <label for="identificador" class="control-label">Identificador:</label>
+                        <input readonly name="identificador" type="text" class="form-control" id="identificador">
                     </div>
 
                     <div class="form-group">
-                        <label for="descricao" class="control-label">Descrição:</label>
-                        <input name="descricao" type="text" class="form-control" id="nome"
-                            v-bind:placeholder="pizza.descricao"  v-bind:value="pizza.descricao">
+                        <label for="nome" class="control-label">Nome:</label>
+                        <input name="nome" type="text" class="form-control" id="nome">
                     </div>
 
                     <div class="form-group">
                         <label for="preco" class="control-label">Preço:</label>
-                        <input name="preco" type="text" class="form-control" id="nome"
-                            v-bind:placeholder="pizza.preco.$numberDecimal" v-bind:value="pizza.preco.$numberDecimal">
+                        <input type="number" min=".00" step=".01" name="preco" class="form-control" id="preco">
                     </div>
 
                     <div class="form-group">
-                        <label for="identificador" class="control-label">Identificador:</label>
-                        <input readonly name="identificador" type="text" class="form-control" id="nome" v-bind:placeholder="pizza._id "  v-bind:value="pizza._id">
+                        <label for="descricao" class="control-label">Descrição:</label>
+                        <input name="descricao" class="form-control" id="descricao">
                     </div>
-                </form>
-            </div>
 
-            <div class="modal-footer modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Salvar Mudanças</button>
+                    <!--input name="id" type="hidden" class="form-control" id="idnf" value="editar"-->
+                    <!--input name="id-peca" type="hidden" class="form-control" id="id-peca" value=""-->
+
+                    <button href="#" v-on:click="atualizar_pizza()" class="btn btn-success">Atualizar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </form>
             </div>
         </div>
     </div>
