@@ -52,7 +52,7 @@ module.exports = (app) => {
 
     controller.deletar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {
         var id = req.params.id;
-        
+        // deleteOne
         Pizza.deleteOne({ _id: id }, (err) => {
             if (err) return console.error(err);
             controller.pizzas(req, res);
