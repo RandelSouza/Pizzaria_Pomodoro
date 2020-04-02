@@ -22,14 +22,20 @@
                         <div class="col">
                             <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->
                             <!-- Button trigger modal -->
-                            <button style="width: 100%; margin-bottom: 20px;" v-bind:id="`atualizar` + pizza._id" type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal" data-target="#exampleModal" v-bind:data-identificador="pizza._id" v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal" v-bind:data-descricao="pizza.descricao">
+                            <button style="width: 100%; margin-bottom: 20px;" v-bind:id="`atualizar` + pizza._id"
+                                type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal"
+                                data-target="#exampleModal" v-bind:data-identificador="pizza._id"
+                                v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal"
+                                v-bind:data-descricao="pizza.descricao">
                                 Atualizar
                             </button>
                         </div>
                         <div class="col" style="float: left;">
                             <button style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/"
-                            data-toggle="modal" data-target="#exampleModalDelete" v-bind:data-identificador="pizza._id" v-bind:data-nome="pizza.nome" v-bind:data-preco="pizza.preco.$numberDecimal" v-bind:data-descricao="pizza.descricao">
-                            Deletar
+                                data-toggle="modal" data-target="#exampleModalDelete"
+                                v-bind:data-identificador="pizza._id" v-bind:data-nome="pizza.nome"
+                                v-bind:data-preco="pizza.preco.$numberDecimal" v-bind:data-descricao="pizza.descricao">
+                                Deletar
                             </button>
                         </div>
                     </div>
@@ -38,7 +44,8 @@
                 </td>
             </tr>
         </tbody>
-    </table>    
+    </table>
+
     <% include partials/modal_adicionar %>
     <% include partials/modal_atualizar %>
     <% include partials/modal_deletar %>
@@ -46,12 +53,11 @@
 </div>
 
 <div v-if="usuario == 'admin'" align="center" style="padding-top: 20px; padding-bottom: 20px;">
-<button  class="btn btn-xs btn-success mesmo-tamanho" href="#/"  data-toggle="modal" data-target="#exampleModalAdicionar" >
-    Adicionar Pizza
-</button>
-<!--button  class="btn btn-xs btn-danger mesmo-tamanho" href="#/">
-Cancelar
-</button-->
+    <button class="btn btn-xs btn-success mesmo-tamanho" href="#/" data-toggle="modal"
+        data-target="#exampleModalAdicionar">
+        Adicionar Pizza
+    </button>
+
 </div>
 
 <script>
@@ -79,21 +85,39 @@ Cancelar
                 })
                     .then((response) => {
                         app.pizzas = response.data;
-                        $('#exampleModal').modal('show');                        
+                        $('#exampleModal').modal('show');
 
                     })
                     .catch((error) => {
                         console.log(error);
-                    });                               
-                 console.log('Finalizou....');
+                    });
+                console.log('Finalizou....');
             },
 
             deletar_pizza: () => {
                 var id = $('#exampleModalDelete').find("input[name=identificador]").val();
 
-                axios.delete('/pizza/'+ id)
+                axios.delete('/pizza/' + id)
                     .then((response) => app.pizzas = response.data)
                     .catch((error) => console.log(error));
+            },
+
+            adicionar_pizza: () => {
+                var nome = $('#exampleModalAdicionar').find("input[name=nome]").val();
+                var preco = $('#exampleModalAdicionar').find("input[name=preco]").val();
+                var descricao = $('#exampleModalAdicionar').find("textarea[name=descricao]").val();
+
+                axios.post('/adicionar_pizza', {
+                    nome: nome,
+                    preco: preco,
+                    descricao: descricao
+                })
+                    .then((response) => {
+                        app.pizzas = response.data;                       
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             }
         },
         mounted: () => {
@@ -118,19 +142,19 @@ Cancelar
         var modal = $(this);
 
         //modal.find('.modal-title').text('ID ' + recipient)
-        modal.find('#identificador').val(identificador);        
-        
-        modal.find('#nome').attr('placeholder', nome);        
+        modal.find('#identificador').val(identificador);
+
+        modal.find('#nome').attr('placeholder', nome);
         modal.find('#nome').val(nome);
 
         modal.find('#preco').val(preco);
-        modal.find('#preco').attr('placeholder', preco);                
+        modal.find('#preco').attr('placeholder', preco);
 
         modal.find('#descricao').val(descricao);
-        modal.find('#descricao').attr('placeholder', descricao);   
-        
+        modal.find('#descricao').attr('placeholder', descricao);
+
         console.log('Chegou ao fim da função modal');
-    }); 
+    });
 
     $('#exampleModalDelete').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
@@ -143,10 +167,10 @@ Cancelar
         var modal = $(this);
 
         //modal.find('.modal-title').text('ID ' + recipient)
-        modal.find('#identificador').val(identificador);                
-        modal.find('#nome').val(nome);        
-        modal.find('#preco').val(preco);        
-        modal.find('#descricao').val(descricao);        
+        modal.find('#identificador').val(identificador);
+        modal.find('#nome').val(nome);
+        modal.find('#preco').val(preco);
+        modal.find('#descricao').val(descricao);
         console.log('Chegou ao fim da função modal deletar');
     }); 
 </script>

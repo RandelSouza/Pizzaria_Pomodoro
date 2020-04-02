@@ -29,7 +29,7 @@ module.exports = (app) => {
             console.log(results._id);
         });
 
-        res.redirect('/adicionar_pizza');
+        //res.redirect('/adicionar_pizza');
     });
 
 
