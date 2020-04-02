@@ -39,13 +39,14 @@
             </tr>
         </tbody>
     </table>    
+    <% include partials/modal_adicionar %>
     <% include partials/modal_atualizar %>
     <% include partials/modal_deletar %>
 
 </div>
 
 <div v-if="usuario == 'admin'" align="center" style="padding-top: 20px; padding-bottom: 20px;">
-<button  class="btn btn-xs btn-success mesmo-tamanho" href="#/">
+<button  class="btn btn-xs btn-success mesmo-tamanho" href="#/"  data-toggle="modal" data-target="#exampleModalAdicionar" >
     Adicionar Pizza
 </button>
 <!--button  class="btn btn-xs btn-danger mesmo-tamanho" href="#/">
@@ -68,7 +69,7 @@ Cancelar
                 var identificador = $('#exampleModal').find("input[name=identificador]").val();
                 var nome = $('#exampleModal').find("input[name=nome]").val();
                 var preco = $('#exampleModal').find("input[name=preco]").val();
-                var descricao = $('#exampleModal').find("input[name=descricao]").val();
+                var descricao = $('#exampleModal').find("textarea[name=descricao]").val();
 
                 axios.post('/pizza/atualizar', {
                     id: identificador,
@@ -119,15 +120,15 @@ Cancelar
         //modal.find('.modal-title').text('ID ' + recipient)
         modal.find('#identificador').val(identificador);        
         
+        modal.find('#nome').attr('placeholder', nome);        
         modal.find('#nome').val(nome);
-        $('#nome').attr('placeholder', nome);
 
         modal.find('#preco').val(preco);
-        $('#preco').attr('placeholder', preco);
+        modal.find('#preco').attr('placeholder', preco);                
 
         modal.find('#descricao').val(descricao);
-        $('#descricao').attr('placeholder', descricao);
-
+        modal.find('#descricao').attr('placeholder', descricao);   
+        
         console.log('Chegou ao fim da função modal');
     }); 
 
@@ -142,17 +143,10 @@ Cancelar
         var modal = $(this);
 
         //modal.find('.modal-title').text('ID ' + recipient)
-        modal.find('#identificador').val(identificador);        
-        
-        modal.find('#nome').val(nome);
-        $('#nome').attr('placeholder', nome);
-
-        modal.find('#preco').val(preco);
-        $('#preco').attr('placeholder', preco);
-
-        modal.find('#descricao').val(descricao);
-        $('#descricao').attr('placeholder', descricao);
-
+        modal.find('#identificador').val(identificador);                
+        modal.find('#nome').val(nome);        
+        modal.find('#preco').val(preco);        
+        modal.find('#descricao').val(descricao);        
         console.log('Chegou ao fim da função modal deletar');
     }); 
 </script>
