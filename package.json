@@ -25,6 +25,7 @@
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "kind-of": "^6.0.3",
     "lodash": ">=4.17.13",
     "minimist": "^1.2.5",
     "mongoose": ">=5.7.5",
