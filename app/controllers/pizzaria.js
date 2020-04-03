@@ -11,8 +11,7 @@ module.exports = (app) => {
     controller.adicionar_pizza_page = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
 
     controller.pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        Pizza.find((err, pizzas) => {
-            // console.log(pizzas);
+        Pizza.find((err, pizzas) => {            
             if (err) return console.error(err);
             res.json(pizzas);
         });
@@ -27,9 +26,7 @@ module.exports = (app) => {
 
         pizza.save((err, results) => {
             console.log(results._id);
-        });
-
-        //res.redirect('/adicionar_pizza');
+        });        
     });
 
 
@@ -41,7 +38,7 @@ module.exports = (app) => {
         var preco = req.body.preco;
         var descricao = req.body.descricao;
 
-        console.log("identificador: " + id);
+        //console.log("identificador: " + id);
 
         Pizza.findByIdAndUpdate(id, { $set: { nome: nome, descricao: descricao, preco: preco } }, (err) => {
             if (err) return console.error(err);
@@ -49,10 +46,9 @@ module.exports = (app) => {
         });
     });
 
-
     controller.deletar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {
         var id = req.params.id;
-        // deleteOne
+       
         Pizza.deleteOne({ _id: id }, (err) => {
             if (err) return console.error(err);
             controller.pizzas(req, res);
