@@ -22,8 +22,8 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="bootstrap-social/bootstrap-social.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -40,7 +40,8 @@
         <ul class="navbar-nav mr-auto">
 
           <li class="nav-item active">
-            <a class="nav-link" href="/"><i class='fas fa-house-user' style='font-size:20px;color:white'></i>&nbsp;&nbsp;Home</a>
+            <a class="nav-link" href="/"><i class='fas fa-house-user'
+                style='font-size:20px;color:white'></i>&nbsp;&nbsp;Home</a>
           </li>
 
           <!--li class="nav-item active dropdown">
@@ -84,9 +85,32 @@
                <a class="nav-link" href="#">Saída</a>
 		   </li-->
 
+
+          <li class="nav-item active dropdown ">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown"
+              arial-labelledby="navbarDropdown"><i style="font-size:22px"
+              class="fas fa-clipboard-list"></i>&nbsp;&nbsp;Cardápio</a>
+            <div class="dropdown-menu" arial-labelledby="navbarDropdown">
+              <!--a class="dropdown-item" href="/adicionar_pizza">Adicionar Pizza</a-->
+              <!--div class="dropdown-divider"></div-->
+              <a class="dropdown-item " href="/listar_pizzas"><i style="font-size:22px"
+                  class="fas fa-pizza-slice"></i>&nbsp;&nbsp;Pizzas</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/bebidas"><i class="material-icons"
+                  style="font-size:22px">local_bar</i>&nbsp;&nbsp;Bebidas</a>
+            </div>
+          </li>
+
+          <li class="nav-item active">
+            <a v-if="usuario == 'admin'" class="nav-link disabled" href="#"><i style="font-size:22px"
+                class="fas fa-user-cog"></i>&nbsp;&nbsp;Usuário: {{ usuario }}</a>
+            <a v-else class="nav-link disabled" href="#"><i style="font-size:22px"
+                class="fas fa-user-alt"></i>&nbsp;&nbsp;Usuário: {{ usuario }}</a>
+          </li>
+
           <li class="nav-item">
-            <button type="submit" class="btn btn-link nav-link" data-toggle="modal"
-              data-target="#myModal">Logout</button>
+            <button type="submit" class="btn btn-link nav-link" data-toggle="modal" data-target="#myModal"><i
+                class='fas fa-user-slash' style='font-size:20px;color:white'></i>&nbsp;&nbsp;Logout</button>
             <div class="modal fade" id="myModal" role="dialog">
               <div class="modal-dialog modal-md">
                 <div class="modal-content">
@@ -108,25 +132,9 @@
             </div>
           </li>
 
-          <li class="nav-item active">
-            <a class="nav-link disabled" href="#">Usuário: {{ usuario }}</a>
-          </li>
-
-          <li class="nav-item active dropdown ">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-toggle="dropdown"
-              arial-labelledby="navbarDropdown">Cardápio</a>
-            <div class="dropdown-menu" arial-labelledby="navbarDropdown">
-              <!--a class="dropdown-item" href="/adicionar_pizza">Adicionar Pizza</a-->
-              <!--div class="dropdown-divider"></div-->
-              <a class="dropdown-item " href="/listar_pizzas"><i style="font-size:22px"class="fas fa-pizza-slice"></i>&nbsp;&nbsp;Pizzas</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/bebidas"><i class="material-icons" style="font-size:22px">local_bar</i>&nbsp;&nbsp;Bebidas</a>
-            </div>
-          </li>
-
-          <li class="nav-item active">
+          <!--li class="nav-item active">
             <a class="nav-link disabled" href="#">Número aleatório: {{ random }}</a>
-          </li>
+          </li-->
 
         </ul>
       </div>
