@@ -34,7 +34,7 @@
                             <button style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/"
                                 data-toggle="modal" data-target="#exampleModalDelete"
                                 v-bind:data-identificador="bebida._id" v-bind:data-nome="bebida.nome"
-                                v-bind:data-preco="bebida.preco.$numberDecimal" v-bind:data-descricao="bebida.tipo">
+                                v-bind:data-preco="bebida.preco.$numberDecimal" v-bind:data-tipo="bebida.tipo">
                                 <i style="font-size:18px" class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Deletar
                             </button>
                         </div>
@@ -55,7 +55,7 @@
 <div v-if="usuario == 'admin'" align="center" style="padding-top: 20px; padding-bottom: 20px;">
     <button class="btn btn-xs btn-success mesmo-tamanho" href="#/" data-toggle="modal"
         data-target="#exampleModalAdicionar">
-        <i style="font-size:22px" class="fas fa-plus"></i>&nbsp;&nbsp;Adicionar Bebida
+        <i style="font-size:22px" class="fas fa-plus"></i>&nbsp;&nbsp;Adicionar Bebida!
     </button>
 
 </div>
@@ -85,7 +85,7 @@
                 })
                     .then((response) => {
                         app.bebidas = response.data;
-                        //$('#exampleModal').modal('show');
+                        $('#exampleModal').modal('show');
 
                     })
                     .catch((error) => {

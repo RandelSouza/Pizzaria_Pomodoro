@@ -2,7 +2,9 @@ module.exports = (app) => {
     var Bebida = app.models.bebida;
     var controller = {};
 
-    controller.cardapio_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_bebidas'));
+    //controller.adicionar_pizza_page = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
+
+    //controller.cardapio_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_bebidas'));
 
     controller.bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => {
         Bebida.find((err, bebidas) => {            
@@ -12,7 +14,7 @@ module.exports = (app) => {
     });
 
     controller.adicionar_bebida = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var bebida = new adicionar_bebida({
+        var bebida = new Bebida({
             nome: req.body.nome,
             tipo: req.body.tipo,
             preco: req.body.preco
