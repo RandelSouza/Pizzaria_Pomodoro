@@ -1,0 +1,178 @@
+<% include partials/cabecalho %>
+
+<h1 align="center">{{ titulo }}</h1>
+<div class="container table-responsive-md" style="width:100%; height: 80%; overflow: auto;">
+    <table border="1" class=" table-fixed table text-center  table-dark table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Preço</th>
+                <th scope="col" v-if="usuario == 'admin'">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="bebida in bebidas">
+                <td width="20%">{{ bebida.nome }}</td>
+                <td width="40%">{{ bebida.tipo }}</td>
+                <td width="20%">R$ {{ bebida.preco.$numberDecimal }}</td>
+
+                <td width="20%" v-if="usuario == 'admin'">
+                    <div class="row" ALIGN="center">
+                        <div class="col">
+                            <!-- a style="width: 100%;" class="btn btn-xs btn-primary mesmo-tamanho" href="#/" v-on:click="altera_process(contato._id)">Atualizar</a-->
+                            <!-- Button trigger modal -->
+                            <button style="width: 100%; margin-bottom: 20px;" v-bind:id="`atualizar` + bebida._id"
+                                type="button" class="btn btn-primary mesmo-tamanho" data-toggle="modal"
+                                data-target="#exampleModal" v-bind:data-identificador="bebida._id"
+                                v-bind:data-nome="bebida.nome" v-bind:data-preco="bebida.preco.$numberDecimal"
+                                v-bind:data-tipo="bebida.tipo">
+                                <i style="font-size:18px" class="fas fa-sync"></i>&nbsp;&nbsp;Atualizar
+                            </button>
+                        </div>
+                        <div class="col" style="float: left;">
+                            <button style="width: 100%;" class="btn btn-xs btn-danger mesmo-tamanho" href="#/"
+                                data-toggle="modal" data-target="#exampleModalDelete"
+                                v-bind:data-identificador="bebida._id" v-bind:data-nome="bebida.nome"
+                                v-bind:data-preco="bebida.preco.$numberDecimal" v-bind:data-descricao="bebida.tipo">
+                                <i style="font-size:18px" class="fas fa-trash-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;Deletar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!--% include partials/modal_atualizar %-->
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <% include partials/modal_adicionar_bebida %>
+    <% include partials/modal_atualizar_bebida %>
+    <% include partials/modal_deletar_bebida %>
+
+</div>
+
+<div v-if="usuario == 'admin'" align="center" style="padding-top: 20px; padding-bottom: 20px;">
+    <button class="btn btn-xs btn-success mesmo-tamanho" href="#/" data-toggle="modal"
+        data-target="#exampleModalAdicionar">
+        <i style="font-size:22px" class="fas fa-plus"></i>&nbsp;&nbsp;Adicionar Bebida
+    </button>
+
+</div>
+
+<script>
+    // Criar metodo para atualizar os dados modificados
+    var app = new Vue({
+        el: '#pizzaria',
+        data: {
+            bebidas: [],
+            titulo: 'Cardápio de Bebidas',
+            usuario: '',
+            //random: Math.floor(Math.random() * 10)
+        },
+        methods: {
+            atualizar_bebida: () => {
+                var identificador = $('#exampleModal').find("input[name=identificador]").val();
+                var nome = $('#exampleModal').find("input[name=nome]").val();
+                var preco = $('#exampleModal').find("input[name=preco]").val();
+                var tipo = $('#exampleModal').find("input[name=tipo]").val();
+
+                axios.post('/bebida/atualizar', {
+                    id: identificador,
+                    nome: nome,
+                    preco: preco,
+                    tipo: tipo
+                })
+                    .then((response) => {
+                        app.bebidas = response.data;
+                        //$('#exampleModal').modal('show');
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                console.log('Finalizou....');
+            },
+
+            deletar_bebida: () => {
+                var id = $('#exampleModalDelete').find("input[name=identificador]").val();
+
+                axios.delete('/bebida/' + id)
+                    .then((response) => app.bebidas = response.data)
+                    .catch((error) => console.log(error));
+            },
+
+            adicionar_bebida: () => {
+                var nome = $('#exampleModalAdicionar').find("input[name=nome]").val();
+                var preco = $('#exampleModalAdicionar').find("input[name=preco]").val();
+                var tipo = $('#exampleModalAdicionar').find("input[name=tipo]").val();
+
+                axios.post('/adicionar_bebida', {
+                    nome: nome,
+                    preco: preco,
+                    tipo: tipo
+                })
+                    .then((response) => {
+                        app.bebidas = response.data;                       
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+        },
+        mounted: () => {
+            axios.get('/usuario')
+                .then((response) => app.usuario = response.data)
+                .catch((error) => console.log(error));
+
+            axios.get('/bebidas')
+                .then((response) => app.bebidas = response.data)
+                .catch((error) => console.log(error));
+        }
+    });
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var identificador = button.data('identificador'); // Extract info from data-* attributes
+        var nome = button.data('nome');
+        var preco = button.data('preco');
+        var tipo = button.data('tipo');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+
+        //modal.find('.modal-title').text('ID ' + recipient)
+        modal.find('#identificador').val(identificador);
+
+        modal.find('#nome').attr('placeholder', nome);
+        modal.find('#nome').val(nome);
+
+        modal.find('#preco').val(preco);
+        modal.find('#preco').attr('placeholder', preco);
+
+        modal.find('#tipo').val(tipo);
+        modal.find('#tipo').attr('placeholder', tipo);
+
+        console.log('Chegou ao fim da função modal');
+    });
+
+    $('#exampleModalDelete').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var identificador = button.data('identificador'); // Extract info from data-* attributes
+        var nome = button.data('nome');
+        var preco = button.data('preco');
+        var tipo = button.data('tipo');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+
+        //modal.find('.modal-title').text('ID ' + recipient)
+        modal.find('#identificador').val(identificador);
+        modal.find('#nome').val(nome);
+        modal.find('#preco').val(preco);
+        modal.find('#tipo').val(tipo);
+        console.log('Chegou ao fim da função modal deletar');
+    }); 
+</script>
+
+<% include partials/rodape %>
