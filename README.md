@@ -6,3 +6,6 @@
 
 Site simples de uma Pizzaria
 
+# Requisitos
+
+# Instalacao das dependencias
