@@ -87,21 +87,53 @@
                 })
                     .then((response) => {
                         app.pizzas = response.data;
-                        $('#exampleModal').modal('show');
+                        //$('#exampleModal').modal('show');                                               
 
                     })
                     .catch((error) => {
                         console.log(error);
-                    });
+                    })
+                    .finally(() => {
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Pizza Atualizada com Sucesso!!',
+                            showConfirmButton: false,
+                            timer: 2500
+                        }).then(() => location.reload(true));
+
+
+                    })
                 console.log('Finalizou....');
             },
 
             deletar_pizza: () => {
                 var id = $('#exampleModalDelete').find("input[name=identificador]").val();
 
-                axios.delete('/pizza/' + id)
-                    .then((response) => app.pizzas = response.data)
-                    .catch((error) => console.log(error));
+
+                Swal.fire({
+                    title: 'Deseja realmente deletar essa Pizza?',
+                    text: "Você não poderá reverter isso",
+                    icon: '',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, Deletar!'
+                }).then((result) => {
+                    if (result.value) {
+                        axios.delete('/pizza/' + id)
+                            .then((response) => app.pizzas = response.data)
+                            .then(() => {
+                                Swal.fire(
+                                    'Pizza Deletada!',
+                                    'A Pizza foi Deletada com Sucesso',
+                                    'success'
+                                ).then(() => location.reload(true));
+                            })
+                            .catch((error) => console.log(error))
+                            
+                    }
+                })
             },
 
             adicionar_pizza: () => {
@@ -115,7 +147,7 @@
                     descricao: descricao
                 })
                     .then((response) => {
-                        app.pizzas = response.data;                       
+                        app.pizzas = response.data;
                     })
                     .catch((error) => {
                         console.log(error);
