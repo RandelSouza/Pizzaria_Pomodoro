@@ -131,7 +131,7 @@
                                 ).then(() => location.reload(true));
                             })
                             .catch((error) => console.log(error))
-                            
+
                     }
                 })
             },
@@ -141,17 +141,28 @@
                 var preco = $('#exampleModalAdicionar').find("input[name=preco]").val();
                 var descricao = $('#exampleModalAdicionar').find("textarea[name=descricao]").val();
 
-                axios.post('/adicionar_pizza', {
-                    nome: nome,
-                    preco: preco,
-                    descricao: descricao
+
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Pizza Adicionada com Sucesso!!',
+                    showConfirmButton: false,
+                    timer: 2500
                 })
-                    .then((response) => {
-                        app.pizzas = response.data;
+                    .then(() => {
+                        axios.post('/adicionar_pizza', {
+                            nome: nome,
+                            preco: preco,
+                            descricao: descricao
+                        })
+                            .then((response) => app.pizzas = response.data)
+                            .catch((error) => {
+                                console.log(error);
+                            })
                     })
-                    .catch((error) => {
-                        console.log(error);
-                    });
+                    .then(() => location.reload(true));
+
+
             }
         },
         mounted: () => {
