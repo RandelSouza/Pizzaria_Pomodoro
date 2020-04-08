@@ -90,7 +90,16 @@
                     })
                     .catch((error) => {
                         console.log(error);
-                    });
+                    })
+                    .finally(() => {
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'Pizza Atualizada com Sucesso!!',
+                            showConfirmButton: false,
+                            timer: 2500
+                        }).then(() => location.reload(true));
+                    })
                 console.log('Finalizou....');
             },
 
