@@ -6,7 +6,7 @@ module.exports = (app) => {
     controller.login = (req, res) => res.render('login');
 
     controller.logout = (req, res) => {
-        req.session.destroy();
+        req.session.destroy(); 
         res.redirect('login');
     };
 
