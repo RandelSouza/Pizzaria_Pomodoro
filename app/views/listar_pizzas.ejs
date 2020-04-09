@@ -88,33 +88,50 @@
         },
         methods: {
             atualizar_pizza: () => {
-                var identificador = $('#exampleModal').find("input[name=identificador]").val();
-                var nome = $('#exampleModal').find("input[name=nome]").val();
-                var preco = $('#exampleModal').find("input[name=preco]").val();
-                var descricao = $('#exampleModal').find("textarea[name=descricao]").val();
+                var identificador = $('#exampleModal').find("input[name=identificador]").val().trim();
+                var nome = $('#exampleModal').find("input[name=nome]").val().trim();
+                var preco = $('#exampleModal').find("input[name=preco]").val().trim();
+                var descricao = $('#exampleModal').find("textarea[name=descricao]").val().trim();
 
-                axios.post('/pizza/atualizar', {
-                    id: identificador,
-                    nome: nome,
-                    preco: preco,
-                    descricao: descricao
-                })
-                    .then((response) => {
-                        app.pizzas = response.data;
-                        //$('#exampleModal').modal('show');                                               
+                var nome_placeholder = $('#exampleModal').find("input[name=nome]").attr('placeholder').trim();
+                var preco_placeholder = $('#exampleModal').find("input[name=preco]").attr('placeholder').trim();
+                var descricao_placeholder = $('#exampleModal').find("textarea[name=descricao]").attr('placeholder').trim();
+
+                if (nome === nome_placeholder && preco === preco_placeholder && descricao === descricao_placeholder) {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Nada foi modificado!!',
+                        showConfirmButton: false,
+                        timer: 2500
+                    }).then(() => $('#exampleModal').modal('hide'));
+                } else {
+
+                    axios.post('/pizza/atualizar', {
+                        id: identificador,
+                        nome: nome,
+                        preco: preco,
+                        descricao: descricao
                     })
-                    .catch((error) => {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        Swal.fire({
-                            position: 'top-center',
-                            icon: 'success',
-                            title: 'Pizza Atualizada com Sucesso!!',
-                            showConfirmButton: false,
-                            timer: 2500
-                        }).then(() => location.reload(true));
-                    })
+                        .then((response) => {
+                            app.pizzas = response.data;
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        })
+                        .finally(() => {
+                            Swal.fire({
+                                position: 'top-center',
+                                icon: 'success',
+                                title: 'Pizza Atualizada com Sucesso!!',
+                                showConfirmButton: false,
+                                timer: 2500
+                            }).then(() => {
+                                $('#exampleModal').modal('hide');
+                                location.reload(true);
+                            });
+                        })
+                }
                 console.log('Finalizou....');
             },
 
@@ -170,11 +187,11 @@
                             .catch((error) => {
                                 console.log(error);
                             })
-                    })                                        
+                    })
                     .then(() => {
                         Toast.fire({
                             icon: 'success',
-                            title: 'Reload for: ' + app.usuario  
+                            title: 'Reload for: ' + app.usuario
                         }).then(() => location.reload(true))
 
                     })
