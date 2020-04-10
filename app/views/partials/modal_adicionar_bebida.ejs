@@ -12,24 +12,24 @@
             </div>
 
             <div class="modal-body">
-                <form method="get" action="">
+                <form  method="get" action="" v-on:submit.prevent="adicionar_bebida()">
 
                     <div class="form-group">
                         <label for="nome" class="control-label">Nome:</label>
-                        <input name="nome" type="text" class="form-control" id="nome">
+                        <input name="nome" type="text" class="form-control" id="nome" required>
                     </div>
 
                     <div class="form-group">
                         <label for="preco" class="control-label">Preço:</label>
-                        <input type="number" min=".00" step=".01" name="preco" class="form-control" id="preco">
+                        <input type="number" min=".00" step=".01" name="preco" class="form-control" id="preco" required>
                     </div>
 
                     <div class="form-group">
                         <label for="tipo" class="control-label">Tipo:</label>
-                        <input name="tipo" class="md-textarea form-control" id="tipo">                        
+                        <input name="tipo" class="md-textarea form-control" id="tipo" required>                        
                     </div>
 
-                    <button v-on:click="adicionar_bebida()" class="btn btn-success">Adicionar</button>
+                    <button type="submit" class="btn btn-success">Adicionar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </form>
             </div>

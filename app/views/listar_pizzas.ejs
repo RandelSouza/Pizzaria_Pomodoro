@@ -165,10 +165,9 @@
             },
 
             adicionar_pizza: () => {
-                var nome = $('#exampleModalAdicionar').find("input[name=nome]").val();
-                var preco = $('#exampleModalAdicionar').find("input[name=preco]").val();
-                var descricao = $('#exampleModalAdicionar').find("textarea[name=descricao]").val();
-
+                var nome = $('#exampleModalAdicionar').find("input[name=nome]").val().trim();
+                var preco = $('#exampleModalAdicionar').find("input[name=preco]").val().trim();
+                var descricao = $('#exampleModalAdicionar').find("textarea[name=descricao]").val().trim();
 
                 Swal.fire({
                     position: 'top-center',
@@ -195,11 +194,9 @@
                         }).then(() => location.reload(true))
 
                     })
-
-
-
             }
         },
+
         mounted: () => {
             axios.get('/usuario')
                 .then((response) => app.usuario = response.data)

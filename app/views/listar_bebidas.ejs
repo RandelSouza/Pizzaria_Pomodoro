@@ -61,6 +61,19 @@
 </div>
 
 <script>
+
+  const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 1500,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
     // Criar metodo para atualizar os dados modificados
     var app = new Vue({
         el: '#pizzaria',
@@ -123,29 +136,61 @@
             deletar_bebida: () => {
                 var id = $('#exampleModalDelete').find("input[name=identificador]").val();
 
-                axios.delete('/bebida/' + id)
-                    .then((response) => app.bebidas = response.data)
-                    .catch((error) => console.log(error));
+                Swal.fire({
+                    title: 'Deseja realmente deletar essa Bebida?',
+                    text: "Você não poderá reverter isso",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sim, Deletar!'
+                }).then((result) => {
+                    if (result.value) {
+                        axios.delete('/bebida/' + id)
+                            .then((response) => app.bebidas = response.data)
+                            .then(() => {
+                                Swal.fire(
+                                    'Pizza Deletada!',
+                                    'A Bebida foi Deletada com Sucesso',
+                                    'success'
+                                ).then(() => location.reload(true));
+                            })
+                            .catch((error) => console.log(error))
+
+                    }
+                })
             },
 
             adicionar_bebida: () => {
-                var nome = $('#exampleModalAdicionar').find("input[name=nome]").val();
-                var preco = $('#exampleModalAdicionar').find("input[name=preco]").val();
-                var tipo = $('#exampleModalAdicionar').find("input[name=tipo]").val();
+                var nome = $('#exampleModalAdicionar').find("input[name=nome]").val().trim();
+                var preco = $('#exampleModalAdicionar').find("input[name=preco]").val().trim();
+                var tipo = $('#exampleModalAdicionar').find("input[name=tipo]").val().trim();
 
-                axios.post('/adicionar_bebida', {
-                    nome: nome,
-                    preco: preco,
-                    tipo: tipo
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Bebida Adicionada com Sucesso!!',
+                    showConfirmButton: false,
+                    timer: 2500
                 })
-                    .then((response) => {
-                        app.bebidas = response.data;
+                    .then(() => {
+                        axios.post('/adicionar_bebida', {
+                            nome: nome,
+                            preco: preco,
+                            tipo: tipo
+                        })
+                            .then((response) => app.bebidas = response.data)
+                            .catch((error) => console.log(error))
                     })
-                    .catch((error) => {
-                        console.log(error);
-                    });
+                    .then(() => {
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Reload for: ' + app.usuario
+                        }).then(() => location.reload(true))
+                    })
             }
         },
+
         mounted: () => {
             axios.get('/usuario')
                 .then((response) => app.usuario = response.data)
