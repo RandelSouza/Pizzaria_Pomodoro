@@ -72,34 +72,51 @@
         },
         methods: {
             atualizar_bebida: () => {
-                var identificador = $('#exampleModal').find("input[name=identificador]").val();
-                var nome = $('#exampleModal').find("input[name=nome]").val();
-                var preco = $('#exampleModal').find("input[name=preco]").val();
-                var tipo = $('#exampleModal').find("input[name=tipo]").val();
+                var identificador = $('#exampleModal').find("input[name=identificador]").val().trim();
+                var nome = $('#exampleModal').find("input[name=nome]").val().trim();
+                var preco = $('#exampleModal').find("input[name=preco]").val().trim();
+                var tipo = $('#exampleModal').find("input[name=tipo]").val().trim();
 
-                axios.post('/bebida/atualizar', {
-                    id: identificador,
-                    nome: nome,
-                    preco: preco,
-                    tipo: tipo
-                })
-                    .then((response) => {
-                        app.bebidas = response.data;
-                        $('#exampleModal').modal('show');
+                var nome_placeholder = $('#exampleModal').find("input[name=nome]").attr('placeholder').trim();
+                var preco_placeholder = $('#exampleModal').find("input[name=preco]").attr('placeholder').trim();
+                var tipo_placeholder = $('#exampleModal').find("input[name=tipo]").attr('placeholder').trim();
 
+                if (nome === nome_placeholder && preco === preco_placeholder && tipo === tipo_placeholder) {
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'info',
+                        title: 'Nada foi modificado!!',
+                        showConfirmButton: false,
+                        timer: 2500
+                    }).then(() => $('#exampleModal').modal('hide'));
+                } else {
+                    axios.post('/bebida/atualizar', {
+                        id: identificador,
+                        nome: nome,
+                        preco: preco,
+                        tipo: tipo
                     })
-                    .catch((error) => {
-                        console.log(error);
-                    })
-                    .finally(() => {
-                        Swal.fire({
-                            position: 'top-center',
-                            icon: 'success',
-                            title: 'Pizza Atualizada com Sucesso!!',
-                            showConfirmButton: false,
-                            timer: 2500
-                        }).then(() => location.reload(true));
-                    })
+                        .then((response) => {
+                            app.bebidas = response.data;
+                            $('#exampleModal').modal('show');
+
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        })
+                        .finally(() => {
+                            Swal.fire({
+                                position: 'top-center',
+                                icon: 'success',
+                                title: 'Bebida Atualizada com Sucesso!!',
+                                showConfirmButton: false,
+                                timer: 2500
+                            }).then(() => {
+                                $('#exampleModal').modal('hide');
+                                location.reload(true);
+                            });
+                        })
+                }
                 console.log('Finalizou....');
             },
 
@@ -122,7 +139,7 @@
                     tipo: tipo
                 })
                     .then((response) => {
-                        app.bebidas = response.data;                       
+                        app.bebidas = response.data;
                     })
                     .catch((error) => {
                         console.log(error);
