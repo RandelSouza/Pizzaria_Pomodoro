@@ -7,7 +7,7 @@ module.exports = (app) => {
     app.get('/listar_bebidas', controller.listar_bebidas);
     app.get('/bebidas', controller.bebidas);   
     
-    app.post('/bebida/atualizar', controller.atualizar_bebida);
+    app.put('/bebida/atualizar', controller.atualizar_bebida);
     app.delete('/bebida/:id', controller.deletar_bebida);   
     
 }

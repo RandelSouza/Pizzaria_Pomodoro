@@ -107,7 +107,7 @@
                     }).then(() => $('#exampleModal').modal('hide'));
                 } else {
 
-                    axios.post('/pizza/atualizar', {
+                    axios.put('/pizza/atualizar', {
                         id: identificador,
                         nome: nome,
                         preco: preco,

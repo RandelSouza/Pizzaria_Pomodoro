@@ -103,7 +103,7 @@
                         timer: 2500
                     }).then(() => $('#exampleModal').modal('hide'));
                 } else {
-                    axios.post('/bebida/atualizar', {
+                    axios.put('/bebida/atualizar', {
                         id: identificador,
                         nome: nome,
                         preco: preco,
