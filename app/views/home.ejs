@@ -111,12 +111,12 @@
     },
     mounted: () => {
       axios.get('/usuario')
-        .then((response) => app.usuario = response.data)        
-        .catch((error) => console.log(error));
+        .then(response => app.usuario = response.data)        
+        .catch(error => console.log(error));
 
       axios.get('/pizzas')
-        .then((response) => app.pizzas = response.data)
-        .catch((error) => console.log(error));
+        .then(response => app.pizzas = response.data)
+        .catch(error => console.log(error));
     }
   })
 </script>
