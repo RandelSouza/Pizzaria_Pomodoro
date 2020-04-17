@@ -35,8 +35,8 @@
 	  },
 	  mounted:() => {
 	  	axios.get('/usuario')
-		.then((response) => app.usuario = response.data)
-		.catch((error) => console.log(error));
+		.then(response => app.usuario = response.data)
+		.catch(error => console.log(error));
 	 }
   })
  </script>
