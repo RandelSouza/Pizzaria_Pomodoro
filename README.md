@@ -4,7 +4,7 @@
 
 # Pizzaria_Pomodoro
 
-Site simples de uma Pizzaria, crud básico de pizza e bebida
+Site simples de uma Pizzaria, crud básico de pizza e bebida node.js
 
 # Requisitos
 
