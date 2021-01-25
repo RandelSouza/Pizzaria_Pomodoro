@@ -27,7 +27,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "kind-of": "^6.0.3",
-    "lodash": ">=4.17.13",
+    "lodash": ">=4.17.19",
     "minimist": "^1.2.5",
     "mongoose": ">=5.7.5",
     "nodemon": "^1.19.1",
