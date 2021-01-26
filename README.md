@@ -24,6 +24,11 @@
 <img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/quem_somos.PNG">
 </div>
 
+<div align="center">
+<p><strong>Página de Rodapé</strong></p>
+<img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/rodape.PNG">
+</div>
+
 Site simples de uma Pizzaria, crud básico de pizza e bebida node.js.
 
 # Requisitos
