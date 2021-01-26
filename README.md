@@ -13,6 +13,12 @@
 <p><strong>Funcionalidades do site</strong></p>
 <img width="80%" height="80%" alt="Opçôes do site" src="./img_readme/opcoes.PNG">
 </div>
+
+<div align="center">
+<p><strong>Lista de Pizzas</strong></p>
+<img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/lista_pizzas.PNG">
+</div>
+
 Site simples de uma Pizzaria, crud básico de pizza e bebida node.js.
 
 # Requisitos
