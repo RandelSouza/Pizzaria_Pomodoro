@@ -28,6 +28,16 @@
 <img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/rodape.PNG">
 </div>
 
+<div align="center">
+<p><strong>Cardápio Pizzas</strong></p>
+<img width="80%" height="80%" alt="Cardapio de Pizzas" src="./img_readme/cardapio_pizzas.PNG">
+</div>
+
+<div align="center">
+<p><strong>Cardápio Bebidas</strong></p>
+<img width="80%" height="80%" alt="Cardapio de Bebidas" src="./img_readme/cardapio_bebidas.PNG">
+</div>
+
 # Requisitos
 
 # Instalacao das dependencias
