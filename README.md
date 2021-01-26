@@ -15,17 +15,17 @@
 </div>
 
 <div align="center">
-<p><strong>Lista de Pizzas</strong></p>
+<p><strong>Listagem de Pizzas na página inicial</strong></p>
 <img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/lista_pizzas.PNG">
 </div>
 
 <div align="center">
-<p><strong>Página de Quem somos</strong></p>
+<p><strong>Seção Quem somos</strong></p>
 <img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/quem_somos.PNG">
 </div>
 
 <div align="center">
-<p><strong>Página de Rodapé</strong></p>
+<p><strong>Rodapé</strong></p>
 <img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/rodape.PNG">
 </div>
 
