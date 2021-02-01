@@ -1,5 +1,5 @@
 mongo <<EOF  
 use pizzaria  
-db.pizzas.find({})  
+db.pizzas.find({})
 exit
 EOF  
