@@ -39,5 +39,6 @@
 </div>
 
 # Requisitos
+  * Nodejs instalado.  
 
 # Instalacao das dependencias
