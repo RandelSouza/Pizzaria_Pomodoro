@@ -40,5 +40,6 @@
 
 # Requisitos
   * Nodejs instalado.  
+  * mongodb.
 
 # Instalacao das dependencias
