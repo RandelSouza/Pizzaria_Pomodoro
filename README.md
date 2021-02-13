@@ -46,3 +46,4 @@
 
 # Observações
 * Atualizar screenshots
+* retirar código comentado, desnecessário.
