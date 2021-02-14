@@ -45,4 +45,4 @@
 # Instalacao das dependencias
 
 # Observações
-* Atualizar scrrenshots
+* Atualizar screenshots
