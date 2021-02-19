@@ -14,6 +14,11 @@
 </div>
 
 <div align="center">
+<p><strong>Cardápio</strong></p>
+<img width="80%" height="80%" alt="Dropdown de Pizzas e de Bebidas" src="./img_readme/opcoes_itens.png">
+</div>
+
+<div align="center">
 <p><strong>Listagem de pizzas na página inicial</strong></p>
 <img width="80%" height="80%" alt="Lista de Pizzas" src="./img_readme/lista_pizzas.PNG">
 </div>
