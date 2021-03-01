@@ -1,6 +1,6 @@
 // Carregando modulos. uri mongodb da pizzaria
-var uri = 'mongodb://localhost/pizzaria'
-var app = require('./config/express')();
+const uri = 'mongodb://localhost/pizzaria';
+const app = require('./config/express')();
 
 require('./config/database')(uri)
 
