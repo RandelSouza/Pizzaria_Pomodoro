@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
-module.exports = function(){
+module.exports = () => {
     var app = express();
 
     // Configurações
