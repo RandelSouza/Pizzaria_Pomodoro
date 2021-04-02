@@ -1,6 +1,6 @@
 module.exports = (app) => {   
-    var Pizza = app.models.pizza;
-    var controller = {};        
+    const Pizza = app.models.pizza;
+    const controller = {};        
 
     controller.adicionar_pizza_page = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
 
