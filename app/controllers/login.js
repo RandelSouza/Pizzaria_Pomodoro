@@ -11,16 +11,7 @@ module.exports = (app) => {
     };
 
     controller.validation = (req, res) => {
-        console.log(req.body.login, hash(req.body.senha));
-        
-        //var user = new Usuario({
-        //    login: 'admin',
-        //    senha: hash('123')
-        //});
-        // codigo exemple de inserção de um novo usuário
-        //user.save(function (err, results) {
-        //    console.log(results._id);
-        //});
+        console.log(req.body.login, hash(req.body.senha));               
         
         Usuario.findOne({login : req.body.login, senha : hash(req.body.senha)}, (err, login) => {
             console.log(login);
