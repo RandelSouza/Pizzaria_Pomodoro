@@ -1,7 +1,7 @@
 module.exports = (app) => {
-    var hash = require('object-hash');
-    var Usuario = app.models.usuario;
-    var controller = {};
+    const hash = require('object-hash');
+    const Usuario = app.models.usuario;
+    const controller = {};
 
     controller.login = (req, res) => res.render('login');
 
