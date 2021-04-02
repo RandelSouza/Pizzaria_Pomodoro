@@ -1,11 +1,11 @@
-module.exports = (app) => {   
+module.exports = (app) => {
     const Pizza = app.models.pizza;
-    const controller = {};        
+    const controller = {};
 
     controller.adicionar_pizza_page = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
 
     controller.pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        Pizza.find((err, pizzas) => {            
+        Pizza.find((err, pizzas) => {
             if (err) return console.error(err);
             res.json(pizzas);
         });
@@ -22,7 +22,6 @@ module.exports = (app) => {
             console.log(results._id);
         });        
     });
-
 
     controller.listar_pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('listar_pizzas'));
 
