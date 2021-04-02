@@ -12,7 +12,7 @@ module.exports = (app) => {
     });
 
     controller.adicionar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var pizza = new Pizza({
+        const pizza = new Pizza({
             nome: req.body.nome,
             descricao: req.body.descricao,
             preco: req.body.preco
@@ -27,10 +27,10 @@ module.exports = (app) => {
     controller.listar_pizzas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('listar_pizzas'));
 
     controller.atualizar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var id = req.body.id;
-        var nome = req.body.nome;
-        var preco = req.body.preco;
-        var descricao = req.body.descricao;
+        const id = req.body.id;
+        const nome = req.body.nome;
+        const preco = req.body.preco;
+        const descricao = req.body.descricao;
 
         Pizza.findByIdAndUpdate(id, { $set: { nome: nome, descricao: descricao, preco: preco } }, (err) => {
             if (err) return console.error(err);
@@ -39,7 +39,7 @@ module.exports = (app) => {
     });
 
     controller.deletar_pizza = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var id = req.params.id;
+        const id = req.params.id;
        
         Pizza.deleteOne({ _id: id }, (err) => {
             if (err) return console.error(err);
