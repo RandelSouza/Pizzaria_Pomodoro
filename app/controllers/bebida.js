@@ -3,14 +3,14 @@ module.exports = (app) => {
     const controller = {};
 
     controller.bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        Bebida.find((err, bebidas) => {            
+        Bebida.find((err, bebidas) => { 
             if (err) return console.error(err);
             res.json(bebidas);
         });
     });
 
     controller.adicionar_bebida = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var bebida = new Bebida({
+        const bebida = new Bebida({
             nome: req.body.nome,
             tipo: req.body.tipo,
             preco: req.body.preco
@@ -18,16 +18,16 @@ module.exports = (app) => {
 
         bebida.save((err, results) => {
             console.log(results._id);
-        });        
+        });
     });
 
     controller.listar_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('listar_bebidas'));
 
     controller.atualizar_bebida = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var id = req.body.id;
-        var nome = req.body.nome;
-        var preco = req.body.preco;
-        var tipo = req.body.tipo;
+        const id = req.body.id;
+        const nome = req.body.nome;
+        const preco = req.body.preco;
+        const tipo = req.body.tipo;
 
         Bebida.findByIdAndUpdate(id, { $set: { nome: nome, tipo: tipo, preco: preco } }, (err) => {
             if (err) return console.error(err);
