@@ -1,6 +1,6 @@
 const express = require('express');
 const consign = require('consign');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 
