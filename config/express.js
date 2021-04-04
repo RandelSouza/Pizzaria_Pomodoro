@@ -1,7 +1,7 @@
 const express = require('express');
 const consign = require('consign');
 const bodyParser = require('body-parser');
-var session = require('express-session');
+const session = require('express-session');
 var cookieParser = require('cookie-parser');
 
 module.exports = () => {
