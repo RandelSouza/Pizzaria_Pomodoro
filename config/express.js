@@ -2,7 +2,7 @@ const express = require('express');
 const consign = require('consign');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 module.exports = () => {
     var app = express();
