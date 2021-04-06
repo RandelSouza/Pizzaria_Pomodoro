@@ -1,12 +1,12 @@
 module.exports = (app) => {
-    var controller = app.controllers.pizza;
+    var controllerPizza = app.controllers.pizza;
        
-   // app.get('/adicionar_pizza', controller.adicionar_pizza_page);
-    app.post('/adicionar_pizza', controller.adicionar_pizza);
+   // app.get('/adicionar_pizza', controllerPizza.adicionar_pizza_page);
+    app.post('/adicionar_pizza', controllerPizza.adicionar_pizza);
    
-    app.get('/listar_pizzas', controller.listar_pizzas);
-    app.get('/pizzas', controller.pizzas);   
+    app.get('/listar_pizzas', controllerPizza.listar_pizzas);
+    app.get('/pizzas', controllerPizza.pizzas);   
     
-    app.put('/pizza/atualizar', controller.atualizar_pizza);
-    app.delete('/pizza/:id', controller.deletar_pizza);        
+    app.put('/pizza/atualizar', controllerPizza.atualizar_pizza);
+    app.delete('/pizza/:id', controllerPizza.deletar_pizza);        
 }
