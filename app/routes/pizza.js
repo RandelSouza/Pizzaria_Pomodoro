@@ -1,5 +1,5 @@
 module.exports = (app) => {
-    var controllerPizza = app.controllers.pizza;
+    const controllerPizza = app.controllers.pizza;
           
     app.post('/adicionar_pizza', controllerPizza.adicionar_pizza);
    
