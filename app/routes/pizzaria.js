@@ -1,6 +1,6 @@
 module.exports = (app) => {
-    var controller = app.controllers.pizzaria;
+    var controllerPizzaria = app.controllers.pizzaria;
 
-    app.get('/', controller.home);  
-    app.get('/sobre_nos', controller.about_us);                   
+    app.get('/', controllerPizzaria.home);  
+    app.get('/sobre_nos', controllerPizzaria.about_us);                   
 };
