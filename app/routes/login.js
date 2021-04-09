@@ -1,9 +1,9 @@
 module.exports = (app) => {
-    var controller = app.controllers.login;
+    const controllerLogin = app.controllers.login;
 
-    app.get('/login', controller.login);
-    app.post('/login', controller.validation);
-    app.get('/logout', controller.logout);
+    app.get('/login', controllerLogin.login);
+    app.post('/login', controllerLogin.validation);
+    app.get('/logout', controllerLogin.logout);
 
-    app.get('/usuario', controller.usuario);
+    app.get('/usuario', controllerLogin.usuario);
 }
