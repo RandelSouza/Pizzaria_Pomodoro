@@ -1,7 +1,6 @@
 module.exports = (app) => {
     var controller = app.controllers.bebida;
-    
-    // app.get('/adicionar_bebida', controller.adicionar_bebida_page);
+       
     app.post('/adicionar_bebida', controller.adicionar_bebida);
    
     app.get('/listar_bebidas', controller.listar_bebidas);
