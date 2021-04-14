@@ -1,10 +1,7 @@
 module.exports = (app) => {
     var Bebida = app.models.bebida;
     var controller = {};
-
-    //controller.adicionar_pizza_page = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_pizzas'));
-    //controller.cardapio_bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => res.render('cardapio_bebidas'));
-
+       
     controller.bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => {
         Bebida.find((err, bebidas) => {            
             if (err) return console.error(err);
