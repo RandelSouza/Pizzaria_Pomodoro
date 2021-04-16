@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const Bebida = app.models.bebida;
-    var controller = {};
+    const controller = {};
 
     controller.bebidas = (req, res) => app.controllers.login.autoriza(req, res, () => {
         Bebida.find((err, bebidas) => {            
