@@ -36,7 +36,7 @@ module.exports = (app) => {
     });
 
     controller.deletar_bebida = (req, res) => app.controllers.login.autoriza(req, res, () => {
-        var id = req.params.id;
+        const id = req.params.id;
        
         Bebida.deleteOne({ _id: id }, (err) => {
             if (err) return console.error(err);
